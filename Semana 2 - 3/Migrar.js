@@ -28,7 +28,7 @@ const consultarFirebird = (sql) => {
 };
 
 async function migrarProductos() {
-    console.log('Extrayendo productos desde Firebird...');
+    console.log('Extrayendo productos desde Firebird');
 
     try {
         dbSqlite.exec(`
@@ -45,7 +45,7 @@ async function migrarProductos() {
             );
         `);
 
-        // Leer CATINVEN
+
         const sqlProductos = `
             SELECT 
                 PRODUCTO AS CLAVE, 
@@ -75,7 +75,7 @@ async function migrarProductos() {
         });
 
         migrarTransaction(productos);
-        console.log(`¡Listo! ${productos.length} productos guardados en "cotizador.sqlite".`);
+        console.log(`Listo ${productos.length} productos guardados en sqlite`);
 
     } catch (error) {
         console.error('Error al migrar productos:', error);
